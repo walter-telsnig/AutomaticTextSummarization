@@ -5,12 +5,19 @@ import sys
 from PyQt5 import QtCore, QtWidgets
 from PyQt5.QtWidgets import *
 import PyQt5.QtWidgets as Wid
+
+import Luhn_summarizer_001
+import NLTK_summarizer_001
 from FirstTab import FirstTab
 from SecondTab import SecondTab
 from ThirdTab import ThirdTab
+from Luhn_summarizer_001 import *
+from NLTK_summarizer_001 import *
 
 
 # create a class Main_Window which inherits from QtWidgets.QmainWindow to be able to use menus, status bar etc.
+
+
 class Main_window(QtWidgets.QMainWindow):
     """Main Window"""
 
@@ -19,6 +26,8 @@ class Main_window(QtWidgets.QMainWindow):
         super(Main_window, self).__init__(parent)
         self.setGeometry(50, 50, 1100, 750)
         self.setWindowTitle("Extractive and abstractive text summarization in Python")
+
+        self.contents = "This is all there is. Not much to summarize, sorry mate."
 
         # sets the tabWidget as the central widget inside the QMainWindow
         self.tabWidget = QtWidgets.QTabWidget()
@@ -36,6 +45,7 @@ class Main_window(QtWidgets.QMainWindow):
         self.tabWidget.currentChanged.connect(self.current_tab_changed)
 
         self.updateLine()
+        #self.use_Luhn_summarizer()
 
         # Menu for the application
         self.qtMenu()
@@ -51,6 +61,7 @@ class Main_window(QtWidgets.QMainWindow):
 
         self.thirdTab.textEdit_import.setPlainText("Test 0815")
         self.thirdTab.textEdit_source.setPlainText("Test source")
+
 
 
     # working :)
@@ -71,12 +82,18 @@ class Main_window(QtWidgets.QMainWindow):
         # adding this to the file menu
         file_menu.addAction(open_file_action)
 
+        open_file_action = QAction("NLTK summarizer",self)
+        open_file_action.setStatusTip("NLTK summarizer")
+        open_file_action.triggered.connect(self.use_NLTK_summarizer)
+        file_menu.addAction(open_file_action)
+
+
+
     # action called by file open action
     def file_open(self):
 
         # getting path and bool value
-        path, _ = QFileDialog.getOpenFileName(self, "Open file", "",
-                                                  "Text documents (*.txt);All files (*.*)")
+        path, _ = QFileDialog.getOpenFileName(self, "Open file", "","Text documents (*.txt);All files (*.*)")
 
         # if path is true
         if path:
@@ -119,6 +136,11 @@ class Main_window(QtWidgets.QMainWindow):
             # showing it
             dlg.show()
 
+    def use_NLTK_summarizer(self):
+        raw_text = self.thirdTab.textEdit_source.toPlainText()
+        final_text = NLTK_summarizer_001.nltk_summarizer(raw_text)
+        self.thirdTab.textedit_summary.setPlainText(final_text)
+        #print(final_text)
 
 def main():
     """Main loop for the application"""
