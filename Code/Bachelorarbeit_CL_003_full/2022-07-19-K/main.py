@@ -233,8 +233,8 @@ class Main_window(QtWidgets.QMainWindow):
 
     def use_NLTK_summarizer(self):
         raw_text = self.thirdTab.textEdit_source.toPlainText()
-        #final_text = NLTK_summarizer_001.nltk_summarizer(raw_text)
-        final_text = NLTK_summarizer_001.hello_NLTK(raw_text)
+        final_text = NLTK_summarizer_001.nltk_summarizer(raw_text)
+        # final_text = NLTK_summarizer_001.hello_NLTK(raw_text)
         self.thirdTab.textedit_summary.setPlainText(final_text)
         # print(final_text)
 
