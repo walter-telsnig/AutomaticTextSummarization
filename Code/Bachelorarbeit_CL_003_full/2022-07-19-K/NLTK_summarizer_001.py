@@ -3,8 +3,8 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize, sent_tokenize
 import heapq
 
-def hello_NLTK(text):
-    summary = text.upper()
+def hello_NLTK(raw_text):
+    summary = raw_text.upper()
     return summary
 
 def nltk_summarizer(raw_text):

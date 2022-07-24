@@ -63,7 +63,7 @@ class Main_window(QtWidgets.QMainWindow):
         self.tabWidget.currentChanged.connect(self.current_tab_changed)
 
         # NLTK summarizer (not a real summarizer but to test)
-        self.thirdTab.import_btn_summarize.clicked.connect(lambda: print("none"))
+        self.thirdTab.import_btn_summarize.clicked.connect(lambda: self.use_NLTK_summarizer())
         self.thirdTab.import_btn_step1.clicked.connect(lambda: print("none"))
         self.thirdTab.import_btn_step2.clicked.connect(lambda: print("none"))
         self.thirdTab.import_btn_step3.clicked.connect(lambda: print("none"))
@@ -233,7 +233,8 @@ class Main_window(QtWidgets.QMainWindow):
 
     def use_NLTK_summarizer(self):
         raw_text = self.thirdTab.textEdit_source.toPlainText()
-        final_text = NLTK_summarizer_001.nltk_summarizer(raw_text)
+        #final_text = NLTK_summarizer_001.nltk_summarizer(raw_text)
+        final_text = NLTK_summarizer_001.hello_NLTK(raw_text)
         self.thirdTab.textedit_summary.setPlainText(final_text)
         # print(final_text)
 
