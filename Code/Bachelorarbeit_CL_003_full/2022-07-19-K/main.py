@@ -51,9 +51,11 @@ class Main_window(QtWidgets.QMainWindow):
         self.fifthTab = FourthTab()
         self.tabWidget.addTab(self.fifthTab, "TD-IDF")
         self.sixthTab = FourthTab()
-        self.tabWidget.addTab(self.sixthTab, "Page Rank")
+        self.tabWidget.addTab(self.sixthTab, "Text Rank")
         self.seventhTab = FourthTab()
-        self.tabWidget.addTab(self.seventhTab, "KL Divergence")
+        self.tabWidget.addTab(self.seventhTab, "Page Rank")
+        self.eightTab = FourthTab()
+        self.tabWidget.addTab(self.eightTab, "KL Divergence")
 
         # Design guideline
         # Button functions like load text, store text, reset belong into the TabClass e.g. FourthTab()
