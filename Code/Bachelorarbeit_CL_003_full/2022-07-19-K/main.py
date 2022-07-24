@@ -50,6 +50,8 @@ class Main_window(QtWidgets.QMainWindow):
         self.tabWidget.addTab(self.fourthTab, "Luhn summarization")
         self.fifthTab = FourthTab()
         self.tabWidget.addTab(self.fifthTab, "TD-IDF")
+        self.sixthTab = FourthTab()
+        self.tabWidget.addTab(self.sixthTab, "Page Rank")
 
         # Design guideline
         # Button functions like load text, store text, reset belong into the TabClass e.g. FourthTab()
