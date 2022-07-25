@@ -40,20 +40,36 @@ class Main_window(QtWidgets.QMainWindow):
         self.setCentralWidget(self.tabWidget)
 
         # ToDo Renaming - this will get messy > self.thirdTab = FourthTab()
+
+        # FirstTab - currently unused, only for testing purpose
         self.firstTab = FirstTab()
         self.tabWidget.addTab(self.firstTab, "Tab 1")
+        # SecondTab - currently unused, only for testing purpose
         self.secondTab = SecondTab()
         self.tabWidget.addTab(self.secondTab, "Tab 2")
+        # ThirdTab - NLTK summarizer
+        # Tab inherits from class FourthTab, unused buttons hide()
         self.thirdTab = FourthTab()
         self.tabWidget.addTab(self.thirdTab, "NLTK summarization")
+        self.thirdTab.import_btn_step4.hide()
+        self.thirdTab.import_btn_step3.setText("new Button 3")
+        # FourthTab - Luhn summarizer, Button 1-3 used, 4 unused, not hidden
         self.fourthTab = FourthTab()
         self.tabWidget.addTab(self.fourthTab, "Luhn summarization")
+        self.fourthTab.import_btn_step1.setText("word tokenize")
+        self.fourthTab.import_btn_step2.setText("sentence tokenize")
+        self.fourthTab.import_btn_step3.setText("sentence rating")
+        self.fourthTab.import_btn_step4.setText("unused")
+        # FifthTab - TD-IDF
         self.fifthTab = FourthTab()
         self.tabWidget.addTab(self.fifthTab, "TD-IDF")
+        # SixthTab - PageRank
         self.sixthTab = FourthTab()
-        self.tabWidget.addTab(self.sixthTab, "Text Rank")
+        self.tabWidget.addTab(self.sixthTab, "Page Rank")
+        # SeventhTab - TextRank
         self.seventhTab = FourthTab()
         self.tabWidget.addTab(self.seventhTab, "Page Rank")
+        # EightTab - KL Divergence
         self.eightTab = FourthTab()
         self.tabWidget.addTab(self.eightTab, "KL Divergence")
 
